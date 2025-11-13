@@ -155,6 +155,8 @@ int main(){
             std::cout << miColeccionL[libr].getTitulo() << ", " << miColeccionL[libr].getGenero() << ", " << miColeccionL[libr].getAutor() << ", "
             << miColeccionL[libr].getEditorial() << ", " <<  miColeccionL[libr].getPaginas() << ", " << miColeccionL[libr].getCalif() << ", " <<
             miColeccionL[libr].getYear() << std::endl;
+        } else {
+            std::cout << "Esa opcion no es valida! Intenta de nuevo" << std::endl;
         }
         std::cout << "Quieres salir del programa?, Si/No (1 = Si, 2 = No)" << std::endl;
         std::cin >> salirprogra;
