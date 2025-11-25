@@ -1,48 +1,50 @@
 #include <string>
+#include "AutorLibro.h"
+using namespace std;
 
 class Libro {
   private:
-    std::string titulo;
-    std::string genero;
-    std::string autor;
-    std::string editorial;
+    string titulo;
+    string genero;
+    AutorLibro autor;
+    string editorial;
     int paginas;
     float calificacion;
     int year;
   public:
-    Libro(): titulo(""), genero(""), autor(""), editorial(""), paginas(0), calificacion(0.0), year(0){};
-    Libro(std::string t, std::string g, std::string a, std::string e, int p, float c, int y) :
-        titulo(t), genero(g), autor(a), editorial(e), paginas(p), calificacion(c), year(y){};
-    std::string getTitulo();
-    std::string getGenero();
-    std::string getAutor();
-    std::string getEditorial();
+    Libro(): titulo(""), genero(""), autor(), editorial(""), paginas(0), calificacion(0.0), year(0){};
+    Libro(string t, string g, string n, int yn, int lb, string bi, string e, int p, float c, int y) :
+        titulo(t), genero(g), autor(n, yn, lb, bi), editorial(e), paginas(p), calificacion(c), year(y){};
+    string getTitulo();
+    string getGenero();
+    AutorLibro getAutor();
+    string getEditorial();
     int getPaginas();
     float getCalif();
     int getYear();
 
-    void setTitulo(std::string t);
-    void setGenero(std::string g);
-    void setAutor(std::string a);
-    void setEditorial(std::string e);
+    void setTitulo(string t);
+    void setGenero(string g);
+    void setAutor(string n, int yn, int lb, string bi);
+    void setEditorial(string e);
     void setPaginas(int p);
     void setCalificacion(float c);
     void setYear(int y);
 };
 
-std::string Libro :: getTitulo(){
+string Libro :: getTitulo(){
     return titulo;
 }
 
-std::string Libro :: getGenero(){
+string Libro :: getGenero(){
     return genero;
 }
 
-std::string Libro :: getAutor(){
+AutorLibro Libro :: getAutor(){
     return autor;
 }
 
-std::string Libro :: getEditorial(){
+string Libro :: getEditorial(){
     return editorial;
 }
 
@@ -58,19 +60,19 @@ int Libro :: getYear(){
     return year;
 }
 
-void Libro :: setTitulo(std::string t) {
+void Libro :: setTitulo(string t) {
     titulo = t;
 }
 
-void Libro :: setGenero(std::string g) {
+void Libro :: setGenero(string g) {
     genero = g;
 }
 
-void Libro :: setAutor(std::string a) {
-    autor = a;
+void Libro :: setAutor(string n, int yn, int lb, string bi) {
+    autor = AutorLibro(n, yn, lb, bi);
 }
 
-void Libro :: setEditorial(std::string e) {
+void Libro :: setEditorial(string e) {
     editorial = e;
 }
 
