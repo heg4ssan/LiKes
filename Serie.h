@@ -1,49 +1,51 @@
 #include <string>
+#include "Showrunner.h"
+using namespace std;
 
 class Serie {
-  private:
-    std::string nombre;
-    std::string genero;
-    std::string showrunner;
-    std::string estado;
+  protected:
+    string nombre;
+    string genero;
+    Showrunner showrunner;
+    string estado;
     int capitulos;
     float calificacion;
     int year;
   public:
-    Serie(): nombre(""), genero(""), showrunner(""), estado(""), capitulos(0), calificacion(0.0), year(0){};
-    Serie(std::string n, std::string g, std::string sh, std:: string e, int cp, float ca, int y):
-        nombre(n), genero(g), showrunner(sh), estado(e), capitulos(cp), calificacion(ca), year(y){};
-    std::string getNombre();
-    std::string getGenero();
-    std::string getShowR();
-    std::string getEstado();
+    Serie(): nombre(""), genero(""), showrunner(), estado(""), capitulos(0), calificacion(0.0), year(0){};
+    Serie(string n, string gn, string ns, int yn, int g, string sa,  string e, int cp, float ca, int y):
+        nombre(n), genero(gn), showrunner(ns, yn, g, sa), estado(e), capitulos(cp), calificacion(ca), year(y){};
+    string getNombre();
+    string getGenero();
+    Showrunner getShowR();
+    string getEstado();
     int getCaps();
     float getCalif();
     int getYear();
 
-    void setNombre(std::string n);
-    void setGenero(std::string g);
-    void setShowR(std::string sh);
-    void setEstado(std::string e);
+    void setNombre(string n);
+    void setGenero(string gn);
+    void setShowR(string ns, int yn, int g, string sa);
+    void setEstado(string e);
     void setCaps(int cp);
     void setCalif(float ca);
     void setYear(int y);
 
 };
 
-std::string Serie :: getNombre(){
+string Serie :: getNombre(){
     return nombre;
 }
 
-std::string Serie :: getGenero(){
+string Serie :: getGenero(){
     return genero;
 }
 
-std::string Serie :: getShowR(){
+Showrunner Serie :: getShowR(){
     return showrunner;
 }
 
-std::string Serie :: getEstado(){
+string Serie :: getEstado(){
     return estado;
 }
 
@@ -60,19 +62,19 @@ int Serie :: getYear(){
 }
 
 
-void Serie :: setNombre(std::string n){
+void Serie :: setNombre(string n){
     nombre = n;
 }
 
-void Serie :: setGenero(std::string g){
-    genero = g;
+void Serie :: setGenero(string gn){
+    genero = gn;
 }
 
-void Serie :: setShowR(std::string sh){
-    showrunner = sh;
+void Serie :: setShowR(string ns, int yn, int g, string sa){
+    showrunner = Showrunner(ns, yn, g, sa);
 }
 
-void Serie :: setEstado(std::string e){
+void Serie :: setEstado(string e){
     estado = e;
 }
 
@@ -86,4 +88,59 @@ void Serie :: setCalif(float ca){
 
 void Serie :: setYear(int y){
     year = y;
+}
+
+
+
+class SerieEmision: public Serie{
+    private:
+    string canalTV;
+    string frecuenciaEmision;
+    public:
+    SerieEmision(): Serie(), canalTV(""), frecuenciaEmision(""){};
+    SerieEmision(string n, string gn, string ns, int yn, int g, string sa,  string e, int cp, float ca, int y, string ctv, string f) :
+        Serie(n, gn, ns, yn, g, sa, e, cp, ca, y), canalTV(ctv), frecuenciaEmision(f){};
+    string getCanalTv();
+    string getFrecuenciaEm();
+
+    void setCanalTv(string ctv);
+    void setFrecuenciaEm(string f);
+};
+
+string SerieEmision :: getCanalTv(){
+    return canalTV;
+}
+
+string SerieEmision :: getFrecuenciaEm(){
+    return frecuenciaEmision;
+}
+
+void SerieEmision :: setCanalTv(string ctv){
+    canalTV = ctv;
+}
+
+void SerieEmision :: setFrecuenciaEm(string f){
+    frecuenciaEmision = f;
+}
+
+
+
+class SeriePlataforma: public Serie{
+    private:
+    string plataformaPrincipal;
+    public:
+    SeriePlataforma(): Serie(), plataformaPrincipal(""){};
+    SeriePlataforma(string n, string gn, string ns, int yn, int g, string sa,  string e, int cp, float ca, int y, string p) :
+        Serie(n, gn, ns, yn, g, sa, e, cp, ca, y), plataformaPrincipal(p){};
+    string getPlataforma();
+
+    void setPlataforma(string p);
+};
+
+string SeriePlataforma :: getPlataforma(){
+    return plataformaPrincipal;
+}
+
+void SeriePlataforma :: setPlataforma(string p){
+    plataformaPrincipal = p;
 }
