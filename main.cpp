@@ -2,7 +2,7 @@
  * Proyecto LiKes
  * Héctor Enrique Gassan Sánchez
  * A017098097
- * 30/10/2025
+ * 30/11/2025
  */
 
 /**
