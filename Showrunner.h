@@ -53,7 +53,9 @@ class Showrunner {
  * @param
  * @return string: nombre del director
  */
-string Showrunner ::getNombre() { return nombre; }
+string Showrunner ::getNombre() { 
+  return nombre;
+}
 
 /**
  * getter year nacimiento
@@ -61,7 +63,9 @@ string Showrunner ::getNombre() { return nombre; }
  * @param
  * @return int: año de nacimiento del director
  */
-int Showrunner ::getYearNacimiento() { return yearNacimiento; }
+int Showrunner ::getYearNacimiento() { 
+  return yearNacimiento;
+}
 
 /**
  * getter guiones escritos
@@ -69,7 +73,9 @@ int Showrunner ::getYearNacimiento() { return yearNacimiento; }
  * @param
  * @return int: numero de guiones escritos
  */
-int Showrunner ::getGuiones() { return guionesEscritos; }
+int Showrunner ::getGuiones() { 
+  return guionesEscritos;
+}
 
 /**
  * getter series anteriores
@@ -77,7 +83,9 @@ int Showrunner ::getGuiones() { return guionesEscritos; }
  * @param
  * @return string: numero de series anteriores
  */
-string Showrunner ::getSeries() { return seriesAnteriores; }
+string Showrunner ::getSeries() { 
+  return seriesAnteriores;
+}
 
 // Setters de los atributos
 
@@ -87,7 +95,9 @@ string Showrunner ::getSeries() { return seriesAnteriores; }
  * Metodo que asigna la variable n
  * a nombre
  */
-void Showrunner ::setNombre(string n) { nombre = n; }
+void Showrunner ::setNombre(string n) { 
+  nombre = n;
+}
 
 /**
  * setter de year nacimiento
@@ -95,7 +105,9 @@ void Showrunner ::setNombre(string n) { nombre = n; }
  * Metodo que asigna la variable yn
  * a yearNacimiento
  */
-void Showrunner ::setYearNacimiento(int yn) { yearNacimiento = yn; }
+void Showrunner ::setYearNacimiento(int yn) { 
+  yearNacimiento = yn;
+}
 
 /**
  * setter de guiones
@@ -103,7 +115,9 @@ void Showrunner ::setYearNacimiento(int yn) { yearNacimiento = yn; }
  * Metodo que asigna la variable g
  * a guionesEscritos
  */
-void Showrunner ::setGuiones(int g) { guionesEscritos = g; }
+void Showrunner ::setGuiones(int g) { 
+  guionesEscritos = g;
+}
 
 /**
  * setter de series anteriores
@@ -111,6 +125,8 @@ void Showrunner ::setGuiones(int g) { guionesEscritos = g; }
  * Metodo que asigna la variable sa
  * a seriesAnteriores
  */
-void Showrunner ::setSeries(string sa) { seriesAnteriores = sa; }
+void Showrunner ::setSeries(string sa) { 
+  seriesAnteriores = sa;
+}
 
 #endif // SHOWRUNNER_H_
