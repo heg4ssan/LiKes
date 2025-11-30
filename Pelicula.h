@@ -1,10 +1,29 @@
-#include <string>
-#include <iostream>
+/*
+ * Proyecto LiKes
+ * Héctor Enrique Gassan Sanchez
+ * A017098097
+ * 30/10/2025
+ */
+
+/*
+ * Clase Pelicula con los metodos genericos de una pelicula
+ * y tiene 3 clases hijas que son peliculas mas especificas:
+ * Documental, PeliculaAnimada y PeliculaFiccion
+ *
+ */
+
+#ifndef PELICULA_H_
+#define PELICULA_H_
+
 #include "Director.h"
+#include <iostream>
+#include <string>
 
 using namespace std;
 
+// Declaracion de clase pelicula
 class Pelicula {
+    // Declaro variables de instancia
   protected:
     string nombre;
     string genero;
@@ -12,10 +31,18 @@ class Pelicula {
     float duracion;
     float calificacion;
     int year;
+
   public:
-    Pelicula(): nombre(""), genero(""), director(), duracion(0.0), calificacion(0.0), year(0){};
-    Pelicula(string n, string g, string nd, int yn, string p, string ob, float du, float ca, int y):
-        nombre(n), genero(g), director(nd, yn ,p ,ob), duracion(du), calificacion(ca), year(y){};
+    // Constructor Vacio
+    Pelicula()
+        : nombre(""), genero(""), director(), duracion(0.0), calificacion(0.0),
+          year(0) {};
+    // Constructor Parametrizado
+    Pelicula(string n, string g, string nd, int yn, string p, string ob,
+             float du, float ca, int y)
+        : nombre(n), genero(g), director(nd, yn, p, ob), duracion(du),
+          calificacion(ca), year(y) {};
+    // Declaro los metodos que tendra el objeto
     string getNombre();
     string getGenero();
     Director getDirec();
@@ -29,104 +56,213 @@ class Pelicula {
     void setDura(float du);
     void setCalif(float ca);
     void setYear(int y);
-
 };
 
-string Pelicula :: getNombre(){
-    return nombre;
+// Getters de los atributos
+
+/**
+ * getter nombre
+ *
+ * @param
+ * @return string: nombre de la pelicula
+ */
+string Pelicula ::getNombre() { 
+  return nombre;
 }
 
-string Pelicula :: getGenero(){
-    return genero;
+/**
+ * getter genero
+ *
+ * @param
+ * @return string: genero de la pelicula
+ */
+string Pelicula ::getGenero() { 
+  return genero;
 }
 
-Director Pelicula :: getDirec(){
-    return director;
+/**
+ * getter Director
+ *
+ * @param
+ * @return objeto tipo Director: director de la pelicula
+ */
+Director Pelicula ::getDirec() { 
+  return director;
 }
 
-float Pelicula :: getDura(){
-    return duracion;
+/**
+ * getter Duracion
+ *
+ * @param
+ * @return float: duracion de la pelicula
+ */
+float Pelicula ::getDura() { 
+  return duracion;
 }
 
-float Pelicula :: getCalif(){
-    return calificacion;
+/**
+ * getter calificacion
+ *
+ * @param
+ * @return float: calificacion personal de la pelicula
+ */
+float Pelicula ::getCalif() { 
+  return calificacion;
 }
 
-int Pelicula :: getYear(){
-    return year;
+/**
+ * getter year
+ *
+ * @param
+ * @return int: año de estreno de la pelicula
+ */
+int Pelicula ::getYear() { 
+  return year;
 }
 
+// Setters de los atributos
 
-void Pelicula :: setNombre(string n){
-    nombre = n;
+/**
+ * setter de nombre
+ *
+ * Metodo que asigna la variable n
+ * a nombre
+ */
+void Pelicula ::setNombre(string n) { 
+  nombre = n;
 }
 
-void Pelicula :: setGenero(string g){
-    genero = g;
+/**
+ * setter de genero
+ *
+ * Metodo que asigna la variable g
+ * a genero
+ */
+void Pelicula ::setGenero(string g) { 
+  genero = g;
 }
 
-void Pelicula :: setDirec(string nd, int y, string p, string o){
-    director = Director(nd, y, p, o);
+/**
+ * setter de director
+ *
+ * Metodo que recibe los atributos de la clase
+ * Director, reescribe el director vacio con
+ * un director contruido con sus parametros
+ *
+ */
+void Pelicula ::setDirec(string nd, int y, string p, string o) {
+  director = Director(nd, y, p, o);
 }
 
-void Pelicula :: setDura(float du){
-    duracion = du;
+/**
+ * setter de duracion
+ *
+ * Metodo que asigna la variable du
+ * a duracion
+ */
+void Pelicula ::setDura(float du) { 
+  duracion = du;
 }
 
-void Pelicula :: setCalif(float ca){
-    calificacion = ca;
+/**
+ * setter de calificacion
+ *
+ * Metodo que asigna la variable ca
+ * a calificacion
+ */
+void Pelicula ::setCalif(float ca) { 
+  calificacion = ca;
 }
 
-void Pelicula :: setYear(int y){
-    year = y;
+/**
+ * setter de year
+ *
+ * Metodo que asigna la variable y
+ * a year
+ */
+void Pelicula ::setYear(int y) { 
+  year = y;
 }
 
-
-
-class Documental: public Pelicula{
-    private:
+// Declaro el objeto Documental que hereda de Pelicula
+class Documental : public Pelicula {
+  private:
+    // Variables de instancia del objeto
     string tematica;
     string narrador;
 
-    public:
-    Documental() : Pelicula(), tematica(""), narrador(""){};
-    Documental(string n, string g, string nd, int yn, string p, string ob, float du, float ca, int y, string t, string na) :
-        Pelicula(n, g, nd, yn, p, ob, du, ca, y), tematica(t), narrador(na){};
+  public:
+    // Constructor vacio
+    Documental() : Pelicula(), tematica(""), narrador("") {};
+    // Constructor parametrizado
+    Documental(string n, string g, string nd, int yn, string p, string ob,
+               float du, float ca, int y, string t, string na)
+        : Pelicula(n, g, nd, yn, p, ob, du, ca, y), tematica(t),
+          narrador(na) {};
+    // Declaro los metodos que tendra el objeto
     string getTematica();
     string getNarrador();
 
     void setTematica(string t);
     void setNarrador(string n);
-
 };
 
-string Documental :: getTematica(){
-    return tematica;
+/**
+ * getter tematica
+ *
+ * @param
+ * @return string: tematica del documental
+ */
+string Documental ::getTematica() { 
+  return tematica;
 }
 
-string Documental :: getNarrador(){
-    return narrador;
+/**
+ * getter narrador
+ *
+ * @param
+ * @return string: narrador del documental
+ */
+string Documental ::getNarrador() { 
+  return narrador;
 }
 
-void Documental :: setTematica(string t){
-    tematica = t;
+/**
+ * setter de tematica
+ *
+ * Metodo que asigna la variable t
+ * a tematica
+ */
+void Documental ::setTematica(string t) { 
+  tematica = t;
 }
 
-void Documental :: setNarrador(string n){
-    narrador = n;
+/**
+ * setter de narrador
+ *
+ * Metodo que asigna la variable n
+ * a narrador
+ */
+void Documental ::setNarrador(string n) { 
+  narrador = n;
 }
 
-
-
-class PeliculaAnimada: public Pelicula{
-    private:
+// Declaro el objeto PeliculaAnimada que hereda de Pelicula
+class PeliculaAnimada : public Pelicula {
+  private:
+    // Variables de instancia del objeto
     string estudioAnimacion;
     string tipoAnimacion;
 
-    public:
-    PeliculaAnimada() : Pelicula(), estudioAnimacion(""), tipoAnimacion(""){};
-    PeliculaAnimada(string n, string g, string nd, int yn, string p, string ob, float du, float ca, int y, string ea, string ta) :
-        Pelicula(n, g, nd, yn, p, ob, du, ca, y), estudioAnimacion(ea), tipoAnimacion(ta){};
+  public:
+    // Constructor vacio
+    PeliculaAnimada() : Pelicula(), estudioAnimacion(""), tipoAnimacion("") {};
+    // Constructor parametrizado
+    PeliculaAnimada(string n, string g, string nd, int yn, string p, string ob,
+                    float du, float ca, int y, string ea, string ta)
+        : Pelicula(n, g, nd, yn, p, ob, du, ca, y), estudioAnimacion(ea),
+          tipoAnimacion(ta) {};
+    // Declaro los metodos que tendra el objeto
     string getEstudio();
     string getTipo();
 
@@ -134,33 +270,63 @@ class PeliculaAnimada: public Pelicula{
     void setTipo(string ta);
 };
 
-string PeliculaAnimada :: getEstudio(){
-    return estudioAnimacion;
+/**
+ * getter estudio
+ *
+ * @param
+ * @return string: estudio de animacion
+ */
+string PeliculaAnimada ::getEstudio() { 
+  return estudioAnimacion;
 }
 
-string PeliculaAnimada :: getTipo(){
-    return tipoAnimacion;
+/**
+ * getter tipo
+ *
+ * @param
+ * @return string: tipo de animacion
+ */
+string PeliculaAnimada ::getTipo() { 
+  return tipoAnimacion;
 }
 
-void PeliculaAnimada :: setEstudio(string ea){
-    estudioAnimacion = ea;
+/**
+ * setter de estudio
+ *
+ * Metodo que asigna la variable ea
+ * a estudioAnimacion
+ */
+void PeliculaAnimada ::setEstudio(string ea) { 
+  estudioAnimacion = ea;
 }
 
-void PeliculaAnimada :: setTipo(string ta){
-    tipoAnimacion = ta;
+/**
+ * setter de tipo
+ *
+ * Metodo que asigna la variable ta
+ * a tipoAnimacion
+ */
+void PeliculaAnimada ::setTipo(string ta) { 
+  tipoAnimacion = ta;
 }
 
-
-
-class PeliculaFiccion: public Pelicula{
-    private:
+// Declaro el objeto PeliculaFiccion que hereda de Pelicula
+class PeliculaFiccion : public Pelicula {
+  private:
+    // Declaro variables de instancia
     string actorPrincipal;
     string directorFotografia;
 
-    public:
-    PeliculaFiccion() : Pelicula(), actorPrincipal(""), directorFotografia(""){};
-    PeliculaFiccion(string n, string g, string nd, int yn, string p, string ob, float du, float ca, int y, string ap, string df) :
-        Pelicula(n, g, nd, yn, p, ob, du, ca, y), actorPrincipal(ap), directorFotografia(df){};
+  public:
+    // Constructor vacio
+    PeliculaFiccion()
+        : Pelicula(), actorPrincipal(""), directorFotografia("") {};
+    // Conatructor parametrizado
+    PeliculaFiccion(string n, string g, string nd, int yn, string p, string ob,
+                    float du, float ca, int y, string ap, string df)
+        : Pelicula(n, g, nd, yn, p, ob, du, ca, y), actorPrincipal(ap),
+          directorFotografia(df) {};
+    // Declaro los metodos que tendra el objeto
     string getActor();
     string getDirFotografia();
 
@@ -168,18 +334,44 @@ class PeliculaFiccion: public Pelicula{
     void setDirFotografia(string df);
 };
 
-string PeliculaFiccion :: getActor(){
-    return actorPrincipal;
+/**
+ * getter actor
+ *
+ * @param
+ * @return string: actor principal de la pelicula
+ */
+string PeliculaFiccion ::getActor() { 
+  return actorPrincipal;
 }
 
-string PeliculaFiccion :: getDirFotografia(){
-    return directorFotografia;
+/**
+ * getter director fotografia
+ *
+ * @param
+ * @return string: director de fotografia de la pelicula
+ */
+string PeliculaFiccion ::getDirFotografia() { 
+  return directorFotografia;
 }
 
-void PeliculaFiccion :: setActor(string ap){
-    actorPrincipal = ap;
+/**
+ * setter de actor
+ *
+ * Metodo que asigna la variable ap
+ * a actorPrincipal
+ */
+void PeliculaFiccion ::setActor(string ap) { 
+  actorPrincipal = ap;
 }
 
-void PeliculaFiccion :: setDirFotografia(string df){
-    directorFotografia = df;
+/**
+ * setter de director fotogradia
+ *
+ * Metodo que asigna la variable df
+ * a directorFotografia
+ */
+void PeliculaFiccion ::setDirFotografia(string df) { 
+  directorFotografia = df;
 }
+
+#endif // PELICULA_H_
