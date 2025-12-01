@@ -7,7 +7,7 @@ El programa solo corre en la consola y esta hecho con c++ standard por lo que co
 ## Diagrama de clases
 ![](diagrama-de-clases.png)
 
-### Estilo del código
+## Estilo del código
 Para el código se utiliza el formateador ClangFormat. En el archivo `.clang-format` se encuentra el estilo específico utilizado en este proyecto.
 ## Compilacion e instalacion
 Para compilar el programa, instala los .h y el main.cpp, debido a que en main se incluyen todos los .h, solo es necesario compilar el main.
